@@ -1,13 +1,20 @@
 class Solution:
     def sort012(self,arr,n):
         # code here
-        d=[]
-        for j in range(0,n-1):
-            for i in range(0,n-1):
-                if arr[i]>=arr[i+1]:
-                    temp=arr[i]
-                    arr[i]=arr[i+1]
-                    arr[i+1]=temp
-                elif arr[i]==arr[i+1]:
-                    arr[i]=arr[i+1]
-        return arr[j]
+        start = mid = 0
+        pivot = 1
+        end=n-1
+        while mid <= end:
+            if arr[mid] < pivot:      
+                temp=arr[start]
+                arr[start]=arr[mid]
+                arr[mid]=temp
+                start = start + 1
+                mid = mid + 1
+            elif arr[mid] > pivot:    
+                temp=arr[mid]
+                arr[mid]=arr[end]
+                arr[end]=temp
+                end = end - 1
+            else:                   
+                mid = mid + 1
